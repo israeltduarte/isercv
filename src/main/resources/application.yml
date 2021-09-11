@@ -1,0 +1,34 @@
+logging:
+  level:
+    .: error
+    org.springframework: ERROR
+    br.com.iser.isercv: ERROR
+spring:
+  properties:
+    hibernate:
+      dialect:
+        org.hibernate.dialect.PostgreSQLDialect
+  application:
+    name: IserCV
+  profiles:
+    active: dev
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/db-isercv
+    username: postgres
+    password: admin
+    initialization-mode: always
+    initialize: true
+server:
+  port: 8080
+---
+spring:
+  profiles: prod
+
